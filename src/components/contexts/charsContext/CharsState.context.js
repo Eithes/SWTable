@@ -10,6 +10,7 @@ import {
   DISABLE_BUTTON,
   SET_SEARCH_QUERY,
   SET_SEARCHED_CHARS,
+  SET_CURRENT_CHAR
 } from '../../library/actionTypes';
 import { urlGetCharsPage, charsUrl, getSortedCharsUrl } from '../../library/url';
 
@@ -24,6 +25,7 @@ const CharsState = props => {
     searchQuery: '',   
     currentAddFormState: 'add',
     charsAreSortedBy: 'id',
+    currentChar: null,
   }
 
   const [state, dispatch] = useReducer(CharsReducer, initialState);
@@ -80,10 +82,6 @@ const CharsState = props => {
     }
   }
 
-  // const emptyEditCharCharacter = (emptyData) => {
-  //   dispatch({ type: SET_CURR_CHAR_VALUES_EMPTY, data: { char: emptyData }});  
-  // }
-
   const editCharFromForm = async (newChar, url) => {  
     toggleAddButton();
     try {     
@@ -108,6 +106,10 @@ const CharsState = props => {
     dispatch({ type: SET_SEARCH_QUERY, data: { searchQuery: newSearchQuery }});   
   }
 
+  const setCurrentChar = (char) => {
+    dispatch({ type: SET_CURRENT_CHAR, data: {id: char.id, name: char.name} });   
+  }
+
    useEffect(() => {
     const urlForExactPage = getExactPageURL(state.currentPageNumber);
     getCharactersAndPages(`${urlForExactPage}`, state.charsAreSortedBy);
@@ -118,6 +120,7 @@ const CharsState = props => {
     value={{
       characters: state.characters,
       currentPageNumber: state.currentPageNumber,
+      currentChar: state.currentChar,
       setCurrentPageNumber,  
       getExactPage,
       addButtonDisabled: state.addButtonDisabled,
@@ -131,6 +134,7 @@ const CharsState = props => {
       currentAddFormState: state.currentAddFormState,
       editCharFromForm,
       charsAreSortedBy: state.charsAreSortedBy,
+      setCurrentChar,
     }}
   >
     {props.children}

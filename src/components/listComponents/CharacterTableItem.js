@@ -2,6 +2,7 @@ import React, { memo } from 'react';
 import PropTypes from 'prop-types';
 
 import AlterCharButton from '../buttons/AlterCharButton';
+import ModalOnDelete from '../layout/ModalOnDelete';
 
 function CharacterTableItem(props) {
   
@@ -21,7 +22,8 @@ function CharacterTableItem(props) {
           aria-label="Actions"
         >
           <AlterCharButton buttonType='aditChar' buttonText='Edit' id={id} history={props.history} />
-          <AlterCharButton buttonType='deleteChar' buttonText='Remove' id={id}  /> 
+          <AlterCharButton buttonType='deleteChar' buttonText='Remove' id={id} name={name}   /> 
+          <ModalOnDelete name={name} id={id} />
         </div>
       </td>
     </tr>

@@ -56,7 +56,7 @@
     {
       "name": "Darth Vader",
       "species": "Human",
-      "gender": "female",
+      "gender": "male",
       "homeworld": "Tatooine",
       "id": 4
     },
@@ -180,46 +180,11 @@
       "id": 22
     },
     {
-      "name": "Khem",
-      "species": "Iktotchi",
-      "gender": "male",
-      "homeworld": "",
-      "id": 23
-    },
-    {
-      "name": "Adam",
-      "species": "Aleena",
-      "gender": "male",
-      "homeworld": "Tatooine",
-      "id": 24
-    },
-    {
-      "name": "Ak",
-      "species": "Besalisk",
-      "gender": "female",
-      "homeworld": "Tatooine",
-      "id": 25
-    },
-    {
       "name": "Anastasia",
       "species": "Human",
       "gender": "female",
       "homeworld": "Earth",
       "id": 26
-    },
-    {
-      "name": "cvcvv",
-      "species": "Cerean",
-      "gender": "male",
-      "homeworld": "Tatooine",
-      "id": 27
-    },
-    {
-      "name": "Poo",
-      "species": "Aleena",
-      "gender": "male",
-      "homeworld": "fgfg",
-      "id": 29
     }
   ]
 }

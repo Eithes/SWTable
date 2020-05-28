@@ -3,10 +3,10 @@ import PropTypes from 'prop-types';
 import CharItemsContext from '../contexts/charsContext/Chars.context';
 import AddFormContext from '../contexts/addFormContext/addFormContext.context';
 
-function AlterCharButton({ buttonType, buttonText, id, history }) { 
+function AlterCharButton({ buttonType, buttonText, id, name, history }) { 
   let buttonClassName = 'secondary';
   let buttonIcon = '';
-  const { deleteCharacter, characters, } = useContext(CharItemsContext);
+  const { characters, setCurrentChar } = useContext(CharItemsContext);
   const { setEditCharacterValues } = useContext(AddFormContext);
 
   if (buttonType === 'aditChar') {
@@ -18,7 +18,7 @@ function AlterCharButton({ buttonType, buttonText, id, history }) {
   }
 
   const handleAlterCharacter = async () => {
-    if (buttonType === 'deleteChar') deleteCharacter(id);
+     if (buttonType === 'deleteChar') setCurrentChar({id, name});
     if (buttonType === 'aditChar') { 
       const foundCurrentCharacter = characters.find(char => char.id === id);      
       await setEditCharacterValues(foundCurrentCharacter);      
@@ -30,11 +30,13 @@ function AlterCharButton({ buttonType, buttonText, id, history }) {
     <button 
       type="button" 
       className={`btn btn-${buttonClassName}`}
+      data-toggle={buttonType === 'deleteChar'? 'modal' : ''}
+      data-target={buttonType === 'deleteChar'? '#modalOnDelete' : ''}  
       onClick={handleAlterCharacter}
     >
       <i className={buttonIcon} aria-hidden="true" /> 
       {buttonText}
-    </button>
+    </button> 
   )
 }
 
@@ -44,5 +46,6 @@ AlterCharButton.propTypes = {
   buttonType: PropTypes.string.isRequired,
   buttonText: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
-  history: PropTypes.object //eslint-disable-line  
+  name: PropTypes.string.isRequired,
+  history: PropTypes.object //eslint-disable-line 
 };

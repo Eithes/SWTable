@@ -4,8 +4,7 @@ import {
   DISABLE_BUTTON,
   SET_SEARCH_QUERY,
   SET_SEARCHED_CHARS,
-  SET_CURR_CHAR_VALUES,
-  SET_CURR_CHAR_VALUES_EMPTY,
+  SET_CURRENT_CHAR,
 } from '../../library/actionTypes';
 
 export default (state, action) => {
@@ -36,19 +35,13 @@ export default (state, action) => {
       return {
         ...state,
         searchedCharacters: action.data.chars,
-      }
-    case SET_CURR_CHAR_VALUES:
-      return {
-        ...state,
-        currentCharValues: action.data.char,
-        currentAddFormState: 'edit',
-      }
-      case SET_CURR_CHAR_VALUES_EMPTY:
-      return {
-        ...state,
-        currentCharValues: action.data.char,
-        currentAddFormState: 'add',
-      }
+      } 
+      case SET_CURRENT_CHAR:
+        return {
+          ...state,
+          currentChar: action.data,
+        }
+
     default:
     return state;
   }  

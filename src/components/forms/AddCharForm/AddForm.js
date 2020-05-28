@@ -17,15 +17,21 @@ function AddForm(props) {
     currentCharValues,
   } = useContext(AddFormState);
 
-  const { addNewCharFromForm, editCharFromForm } = useContext(CharItemsContext);  
+  const { addNewCharFromForm, editCharFromForm } = useContext(CharItemsContext); 
+  
+  const capitalizeFields = (fieldinput) => {
+    const firstLetter = fieldinput.slice(0, 1).toUpperCase();
+    fieldinput = firstLetter + fieldinput.slice(1);
+    return fieldinput;
+  }
    
   const submitFormIfValid = (e) => {
     e.preventDefault();
     const newChar = {
-      name: fieldsState.name.value, 
+      name: capitalizeFields(fieldsState.name.value),
       species: fieldsState.species.value,
       gender: fieldsState.gender.value,
-      homeworld: fieldsState.homeworld.value,
+      homeworld:capitalizeFields(fieldsState.homeworld.value),
     }    
 
     const formIsValidated = validateFormOnSubmit();
