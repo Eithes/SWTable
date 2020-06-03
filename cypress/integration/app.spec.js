@@ -1,4 +1,4 @@
-context('sonalake-task-react App', () => {
+context('task-react App', () => {
   beforeEach(() => {
     cy.visit('');
   });
