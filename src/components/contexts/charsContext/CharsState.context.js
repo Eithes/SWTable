@@ -37,7 +37,8 @@ const CharsState = props => {
       getPaginationDataFromHttp(headerLinks);
       dispatch({ type: SET_CHARS_DATA, data: { chars: resData, addButtonDisabled: false, sorted: sortedBy }});      
     } catch(err) {
-      console.log(err);
+      //TODO
+      console.log(err.message);
     }
   }
 

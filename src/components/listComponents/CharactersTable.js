@@ -8,8 +8,7 @@ function CharactersTable(props) {
 
   const { characters, searchedCharacters, searchQuery, getExactPage } = useContext(CharItemsContext);
 
-  const handleSorting = (e) => {
-    console.log(e.target.id);   
+  const handleSorting = (e) => {     
     getExactPage(1, e.target.id);
   }
 
